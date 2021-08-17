@@ -12,6 +12,7 @@ function SpawnBaseItems()
             MoneyPrinter:SetPos(Vector(Position[1]))
             MoneyPrinter:SetAngles(Angle(Position[2]))
             MoneyPrinter.FlagEnt = FlagEnt
+            MoneyPrinter:SetFlagEnt(FlagEnt)
             MoneyPrinter:Spawn()
         end
     end

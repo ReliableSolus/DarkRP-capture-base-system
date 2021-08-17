@@ -2,17 +2,13 @@ include("shared.lua")
 
 function ENT:Draw()
     self:DrawModel()
-    local pos = self:GetPos() + Vector(0, 0, self:OBBMaxs().z)
-    local ang = LocalPlayer():EyeAngles()
+    if self:GetPos():Distance(LocalPlayer():GetPos()) > 100 then return end
+    local pos = self:GetPos()
+    local ang = self:GetAngles()
     ang:RotateAroundAxis(ang:Forward(), 90)
-    ang:RotateAroundAxis(ang:Right(), 90)
-    cam.Start3D2D(pos, Angle(ang.x, ang.y, ang.z), 0.5)
-
-    if self:GetState() ~= 0 then
-        draw.DrawText("Территорию захватывает: " .. self:GetPlayerCL():Name(), "ScoreboardDefault", 5, -1, color_white, TEXT_ALIGN_LEFT)
-    end
-
-    draw.DrawText("Территория " .. self:GetTerritoryName(), "ScoreboardDefault", 10, -20, color_white, TEXT_ALIGN_LEFT)
-    draw.DrawText("Контролируется: " .. RaidSystem.TeamsNames[self:GetClaimedTeam()], "ScoreboardDefault", 10, -40, color_white, TEXT_ALIGN_LEFT)
+    ang:RotateAroundAxis(ang:Right(), -90)
+    cam.Start3D2D(pos + Vector(0, 0, 15), Angle(0, LocalPlayer():EyeAngles().y - 90, 90), 0.07)
+    draw.SimpleTextOutlined("Контролируется: " .. RaidSystem.TeamsNames[self:GetClaimedTeam()], "raid_font50", 0, 0, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color(0, 0, 0, 255))
+    draw.SimpleTextOutlined("Территория " .. self:GetTerritoryName(), "raid_font50", 0, 0, Color(255, 255, 255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER, 1, Color(0, 0, 0, 255))
     cam.End3D2D()
 end

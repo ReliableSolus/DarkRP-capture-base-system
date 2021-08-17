@@ -8,9 +8,9 @@ RaidSystem.TeamsNames = {
 
 -- Combining professions into groups. Group numbers should be taken from the table TeamsNames.
 RaidSystem.RestrictedTeams = {
-    [TEAM_CITIZEN] = 1,
-    [TEAM_POLICE] = 2
+    [TEAM_CITIZEN] = 2,
+    [TEAM_POLICE] = 3
 }
 
 -- The number of the police group. Used for a special code.
-RaidSystem.PoliceTeamNumber = 2
+RaidSystem.PoliceTeamNumber = 3

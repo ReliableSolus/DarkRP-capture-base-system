@@ -49,7 +49,7 @@ function ENT:Think()
     self:NextThink(CurTime() + 1)
     if self:GetState() == 0 then return end
     if CurTime() - self:GetStartTime() > RaidSystem.CaptureTime then return self:EndClaim(true) end
-    if not self:GetPlayerCL():Alive() or self:GetPlayerCL():GetPos():Distance(self:GetPos()) > 5000 then return self:EndClaim(false) end
+    if self:GetPlayerCL() ~= nil and not self:GetPlayerCL():Alive() or self:GetPlayerCL():GetPos():Distance(self:GetPos()) > 5000 then return self:EndClaim(false) end
 
     return true
 end

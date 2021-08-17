@@ -7,4 +7,5 @@ ENT.Category = "RaidSystem"
 
 function ENT:SetupDataTables()
     self:NetworkVar("Int", 0, "Money")
+    self:NetworkVar("Entity", 0, "FlagEnt")
 end

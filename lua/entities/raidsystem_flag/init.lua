@@ -26,7 +26,7 @@ function ENT:ClaimTerritory(ply)
     self:SetState(1)
     RaidSystem.BroadCastMessage("Начался захват территории " .. self:GetTerritoryName() .. ".")
 
-    timer.Create(self:EntIndex() .. "_TryClaiming", 900, 1, function()
+    timer.Create(self:EntIndex() .. "_TryClaiming", RaidSystem.TimeToNextCapture, 1, function()
         RaidSystem.BroadCastMessage("Территория " .. self:GetTerritoryName() .. " снова доступна для захвата.")
     end)
 
